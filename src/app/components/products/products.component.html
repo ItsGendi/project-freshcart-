@@ -1,0 +1,24 @@
+<div *ngIf="productListProducts.length >0;else loading" class="container">
+    <div class="row gy-4">
+        <div *ngFor="let product of productListProducts" class="col-md-3">
+            <div class="product overflow-hidden p-3">
+                <div [routerLink]="['/productdetails',product._id]">
+                    <img [src]="product.imageCover" [alt]="product.title" class="w-100">
+                    <p class="text-main">{{product.category.name}}</p>
+                    <p>{{product.title}}</p>
+                    <div class="d-flex justify-content-between">
+                        <p>{{product.price}}EGP</p>
+                        <p><i class="fa-solid fa-star rating-color"></i>{{product.ratingsAverage}}</p>
+                    </div>
+                </div>
+                <button (click)="addToMyCart2(product._id)" class="btn bg-main w-100 text-light">add to cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-spinner fa-spin text-main fa-5x"></i>
+    </div>
+</ng-template>

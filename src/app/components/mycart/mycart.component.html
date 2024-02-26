@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <h3 class="fw-bold my-5"> Shopping Cart</h3>
+        <div class="col-md-10 m-auto my-5 bg-light shadow p-5">
+            <h5>
+                <span class="fw-bold fs-4 text-main">
+                    Total Price:
+                </span>
+                <span class="fs-4"> {{cartItem?.totalCartPrice}} EGP</span>
+            </h5>
+            <div *ngFor="let product of cartItem?.products" class="row py-3 border-bottom">
+                <div class="col-md-2">
+                    <img [src]="product.product.imageCover" alt="imgCover" class="w-100 rounded-4">
+                </div>
+                <div class="col-md-10 d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="fs-4">{{product.product.title}}</p>
+                        <p class="fs-5">{{product.price}}EGP</p>
+                        <p class="text-main">{{product.product.category.name}}</p>
+                        <button (click)="deleteMyCart(product.product._id)" class="btn btn-outline-danger">
+                            <i class="fa-regular fa-trash-can"></i> Remove</button>
+                    </div>
+                    <div>
+                        <button (click)="updateMyCart(product.count-1,product.product._id)" class="btn btn-outline-success rounded-circle">
+                            <i class="fa-solid fa-minus"></i></button>
+                        <span class="mx-2 fs-5">{{product.count}}</span>
+                        <button (click)="updateMyCart(product.count+1,product.product._id)" class="btn btn-outline-success rounded-circle">
+                            <i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
