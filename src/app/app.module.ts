@@ -14,7 +14,7 @@ import { MycartComponent } from './components/mycart/mycart.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SigninComponent } from './auth-components/signin/signin.component';
 import { SignupComponent } from './auth-components/signup/signup.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -23,6 +23,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MainSliderComponent } from './components/main-slider/main-slider.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { AllordersComponent } from './components/allorders/allorders.component';
+import { BrandsdetailsComponent } from './components/brandsdetails/brandsdetails.component';
+import { SearchPipe } from './components/search.pipe';
 
 
 
@@ -44,7 +49,12 @@ import { ToastrModule } from 'ngx-toastr';
     ProductDetailsComponent,
     ForgotPasswordComponent,
     ResetpasswordComponent,
-    MainSliderComponent
+    MainSliderComponent,
+    CategoryDetailsComponent,
+    PaymentComponent,
+    AllordersComponent,
+    BrandsdetailsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -53,6 +63,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
+    FormsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

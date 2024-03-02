@@ -1,1 +1,27 @@
-<p>wishlist works!</p>
+<section class="my-5">
+    <div class="row gy-4">
+        <h1 class="text-main fs-2 text-center fw-bold pt-5">My Wishlist</h1>
+        <hr>
+        <div *ngFor="let product of productList" class="col-md-3">
+            <div class="product position-relative overflow-hidden p-3">
+                <!-- add button -->
+                <a *ngIf="!wishListData.includes(product._id)" (click)="addFav(product._id)"><i
+                        class="heart fa-regular fa-heart"></i></a>
+                <!-- remove button -->
+                <a *ngIf="wishListData.includes(product._id)" (click)="removeFav(product._id)"><i
+                        class="heart text-danger fa-solid fa-heart fa-2x"></i></a>
+
+                <div [routerLink]="['/productdetails',product._id]">
+                    <img [src]="product.imageCover" [alt]="product.title" class="w-100">
+                    <p class="text-main">{{product.category.name}}</p>
+                    <p>{{product.title}}</p>
+                    <div class="d-flex justify-content-between">
+                        <p>{{product.price}} EGP</p>
+                        <p><i class="fa-solid fa-star rating-color"></i>{{product.ratingsAverage}}</p>
+                    </div>
+                </div>
+                <button (click)="addToMyCart(product._id)" class="btn bg-main w-100 text-light">add to cart</button>
+            </div>
+        </div>
+    </div>
+</section>

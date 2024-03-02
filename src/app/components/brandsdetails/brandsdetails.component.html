@@ -1,0 +1,11 @@
+<section *ngIf="brandDetails?._id" class="my-4 vh-100">
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-8">
+            <div class="border border-success rounded p-2 shadow">
+                <img class="w-100"  [src]="brandDetails?.image" [alt]="brandDetails?.name">
+                <h3 class="text-info text-center"><span>Manufacturer: </span>{{brandDetails?.slug}}</h3>
+                <h3 class="text-center text-main pt-4"><span>Brand Name: </span> {{brandDetails?.name}}</h3>
+            </div>
+        </div>
+    </div>
+</section>

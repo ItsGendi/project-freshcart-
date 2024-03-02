@@ -1,8 +1,9 @@
+<!-- Website Slider -->
 <app-main-slider></app-main-slider>
 <section>
     <div>
-        <h3 class="fw-bold">Discover Fresh Cart </h3>
-        </div>
+        <h3 class="fw-bold my-5 text-main">" Discover Fresh Cart "</h3>
+    </div>
     <owl-carousel-o [options]="customOptions">
 
         <ng-container *ngFor="let slide of categoryList">
@@ -16,17 +17,29 @@
 </section>
 
 
-
+<!-- search and products -->
 <div *ngIf="productList.length >0; else loading" class="container">
+
+    <div class="my-5">
+        <h2 class="fs-4 text-center fw-bold"> " Or you can search by Category, title.... "</h2>
+        <input type="text" placeholder="search.." class="w-50 m-auto form-control my-5" [(ngModel)]="searchValue">
+    </div>
+
     <div class="row gy-4">
-        <div *ngFor="let product of productList" class="col-md-3">
-            <div class="product overflow-hidden p-3">
+        <div *ngFor="let product of productList | search : searchValue" class="col-md-3">
+            <div class="product position-relative overflow-hidden p-3">
+                <!-- add button -->
+                <a *ngIf="!wishListData.includes(product._id)" (click)="addFav(product._id)"><i
+                        class="heart fa-regular fa-heart"></i></a>
+                <!-- remove button -->
+                <a *ngIf="wishListData.includes(product._id)" (click)="removeFav(product._id)"><i
+                        class="heart text-danger fa-solid fa-heart fa-2x"></i></a>
                 <div [routerLink]="['/productdetails',product._id]">
                     <img [src]="product.imageCover" [alt]="product.title" class="w-100">
                     <p class="text-main">{{product.category.name}}</p>
                     <p>{{product.title}}</p>
                     <div class="d-flex justify-content-between">
-                        <p>{{product.price}}EGP</p>
+                        <p>{{product.price}} EGP</p>
                         <p><i class="fa-solid fa-star rating-color"></i>{{product.ratingsAverage}}</p>
                     </div>
                 </div>

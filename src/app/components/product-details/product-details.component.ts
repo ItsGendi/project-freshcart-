@@ -39,6 +39,7 @@ export class ProductDetailsComponent {
           progressBar:true,
           timeOut:2000
         });
+        this._cart.cartNumber.next(resp.numOfCartItems);
       },
       error: (err) => {
         console.log(err);

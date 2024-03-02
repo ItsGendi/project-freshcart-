@@ -1,14 +1,17 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-cart-shopping text-success"></i> <span
-                class="mx-3 fw-bolder">Fresh Cart</span></a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <div class="d-flex justify-content-center align-content-center align-items-center">
+                <img src="../../../assets/images/shopping-cart.png" alt="fresh cart logo" width="42px">
+                <span class="mx-3 fw-bolder fs-3">FreshCart</span>
+            </div>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul *ngIf="isLogin" class="navbar-nav me-auto mb-2 mb-lg-0">
-
+            <ul *ngIf="isLogin" class="navbar-nav m-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/home" routerLinkActive="text-main">Home </a>
                 </li>
@@ -22,9 +25,6 @@
                     <a class="nav-link" routerLink="/products" routerLinkActive="text-main">products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/mycart" routerLinkActive="text-main">Cart</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" routerLink="/wishlist" routerLinkActive="text-main">Wishlist</a>
                 </li>
             </ul>
@@ -36,14 +36,32 @@
                 <li *ngIf="!isLogin" class="nav-item">
                     <a class="nav-link" routerLink="/signup" routerLinkActive="text-main">signup</a>
                 </li>
+
+                <!-- <li *ngIf="isLogin" class="nav-item position-relative pe-2">
+                    <a class="nav-link" routerLinkActive="text-main" routerLink="/wishlist">
+                        <i class="fa-solid fa-heart fs-4 text-danger"></i>
+                        <span
+                            class="badge bg-info position-absolute top-0 start-50 border border-3 rounded-circle border-white">{{wishListNumber}}</span></a>
+                </li> -->
+
+
+                <li *ngIf="isLogin" class="nav-item position-relative ps-2">
+                    <a class="nav-link" routerLink="/mycart" routerLinkActive="text-main"><i
+                            class="fas fa-cart-shopping fs-3 text-main"></i>
+                        <span
+                            class="badge bg-info position-absolute top-0 start-50 border border-3 rounded-circle border-white">{{cartNum}}</span></a>
+                </li>
+
                 <li *ngIf="isLogin" class="nav-item">
-                    <a (click)="logout()" class="nav-link mx-3">logout</a>
+                    <a (click)="logout()" class="nav-link mx-3" role="button">logout</a>
                 </li>
-                <li class="nav-item d-flex justify-content-center align-items-center">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-linkedin mx-3"></i>
-                    <i class="fab fa-twitter"></i>
+
+                <li class="nav-item d-flex justify-content-center align-items-center ms-4">
+                    <i class="soicial-icon fab fa-facebook fs-4" role="button"></i>
+                    <i class="soicial-icon fab fa-instagram mx-3 fs-4" role="button"></i>
+                    <i class="soicial-icon fab fa-twitter fs-4" role="button"></i>
                 </li>
+
             </ul>
         </div>
     </div>

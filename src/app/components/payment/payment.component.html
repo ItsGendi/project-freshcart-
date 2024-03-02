@@ -1,0 +1,47 @@
+<section>
+    <div class="container">
+        <h1 class="text-main fw-bold text-center my-5"> Checkout </h1>
+        <form [formGroup]="checkOutForm" (ngSubmit)="payment(checkOutForm)">
+            <div class="row">
+                <div class="col-md-8 m-auto my-4">
+                    <h3 class="mb-3">please fill up the following fields</h3>
+                    <div class="cartlayer bg-light p-4">
+                        <div class="my-2">
+                            <label for="userOrderDetails">Details</label>
+                            <input formControlName="details" type="text" class="form-control" id="userOrderDetails">
+                            <div *ngIf="checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched"
+                                class="alert alert-danger mt-2" role="alert">
+                                <p *ngIf="checkOutForm.get('details')?.getError('required')"> this filed is required</p>
+                                <p *ngIf="checkOutForm.get('details')?.getError('maxlength')"> maximum length is 128
+                                    character</p>
+                                <p *ngIf="checkOutForm.get('details')?.getError('minlength')"> min length is 24
+                                    character</p>
+                            </div>
+                        </div>
+                        <div class="my-2">
+                            <label for="userOrderPhone">Phone</label>
+                            <input formControlName="phone" type="tel" class="form-control" id="userOrderPhone">
+                            <div *ngIf="checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched"
+                                class="alert alert-danger mt-2" role="alert">
+                                <p *ngIf="checkOutForm.get('phone')?.getError('required')"> phone number is required</p>
+                                <p *ngIf="checkOutForm.get('phone')?.getError('pattern')"> Please enter a valid phone
+                                    number</p>
+                            </div>
+                        </div>
+                        <div class="my-2">
+                            <label for="userOrderCity">City</label>
+                            <input formControlName="city" type="text" class="form-control" id="userOrderCity">
+                            <div *ngIf="checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched"
+                                class="alert alert-danger mt-2" role="alert">
+                                <p *ngIf="checkOutForm.get('city')?.getError('required')"> please enter your city</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button [disabled]="checkOutForm.invalid" type="submit" class="btn bg-main text-light">Check out</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

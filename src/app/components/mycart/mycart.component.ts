@@ -27,8 +27,8 @@ export class MycartComponent implements OnInit {
   }
 
   updateMyCart(count: number, id: string) {
-    if(count == 0){
-      this.deleteMyCart(id)
+    if (count == 0) {
+      this.deleteMyCart(id);
     }
     console.log(count, id);
     this._cart.updateCart(count, id).subscribe({
@@ -48,10 +48,25 @@ export class MycartComponent implements OnInit {
       next: (resp) => {
         console.log(resp);
         this.cartItem = resp.data;
+        this._cart.cartNumber.next(resp.numOfCartItems);
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
+
+  // clear(): void {
+  //   this._cart.clearAllCart().subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //       if (response.message === 'success') {
+  //         this.cartItem = null; // or this.cartItem = [];
+  //       }
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //     },
+  //   });
+  // }
 }
